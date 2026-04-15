@@ -4,30 +4,24 @@ import VID1 from "../assets/Vids/VID-1.mp4";
 
 function Home() {
   const videoRef = useRef(null);
-  const [showTitle, setShowTitle] = useState(false);
+  const [showTitle, setShowTitle] = useState(true);
 
   useEffect(() => {
     const v = videoRef.current;
     if (v) {
       v.play?.().catch(() => {});
     }
-
-    const timer = setTimeout(() => {
-      setShowTitle(true);
-    }, 1000);
-
-    return () => clearTimeout(timer);
   }, []);
 
   return (
     <div
       id="home"
-      className="relative flex h-screen min-h-screen items-center justify-center overflow-hidden"
+      className="relative flex h-screen min-h-screen items-center justify-center overflow-hidden bg-[#0f1f2a]"
       style={{ perspective: "900px" }}
     >
       <video
         ref={videoRef}
-        className="absolute inset-0 -z-10 h-full w-full object-cover pointer-events-none"
+        className="absolute inset-0 h-full w-full object-cover pointer-events-none"
         src={VID1}
         autoPlay
         muted
@@ -36,13 +30,12 @@ function Home() {
         aria-hidden="true"
       />
 
-      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 bg-black/40" />
 
-      <div className="relative z-10 px-6">
+      <div className="relative z-10 px-6 text-center">
         <h1
-          aria-hidden={!showTitle}
           className={[
-            "text-center font-extrabold tracking-tight text-white drop-shadow-xl",
+            "font-extrabold tracking-tight text-white drop-shadow-xl",
             "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight",
             showTitle ? "emerge-3d" : "opacity-0",
           ].join(" ")}
