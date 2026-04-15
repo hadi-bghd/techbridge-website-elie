@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/techbridge-website-elie/static/css/main.bd818356.css",
-    "main.js": "/techbridge-website-elie/static/js/main.2ad5093b.js",
+    "main.js": "/techbridge-website-elie/static/js/main.01dd2231.js",
     "static/js/453.3eea003b.chunk.js": "/techbridge-website-elie/static/js/453.3eea003b.chunk.js",
     "static/media/VID-2.mp4": "/techbridge-website-elie/static/media/VID-2.2d467181dd3ae6a563be.mp4",
     "static/media/VID-1.mp4": "/techbridge-website-elie/static/media/VID-1.cdaba043b62640d320fa.mp4",
@@ -10,11 +10,11 @@
     "static/media/LogoNoBG.png": "/techbridge-website-elie/static/media/LogoNoBG.b678bb0f7e6a1b87daf5.png",
     "index.html": "/techbridge-website-elie/index.html",
     "main.bd818356.css.map": "/techbridge-website-elie/static/css/main.bd818356.css.map",
-    "main.2ad5093b.js.map": "/techbridge-website-elie/static/js/main.2ad5093b.js.map",
+    "main.01dd2231.js.map": "/techbridge-website-elie/static/js/main.01dd2231.js.map",
     "453.3eea003b.chunk.js.map": "/techbridge-website-elie/static/js/453.3eea003b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bd818356.css",
-    "static/js/main.2ad5093b.js"
+    "static/js/main.01dd2231.js"
   ]
 }
