@@ -34,7 +34,7 @@ function Home() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         aria-hidden="true"
       />
 
