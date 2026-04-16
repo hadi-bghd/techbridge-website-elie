@@ -35,6 +35,19 @@ function Home() {
       className="relative flex h-screen min-h-screen items-center justify-center overflow-hidden bg-[#071b26]"
       style={{ perspective: "900px" }}
     >
+      {/* ✅ Hidden SEO H1 (does NOT affect design) */}
+      <h1 className="sr-only">
+        IT Solutions and Managed IT Services in Lebanon
+      </h1>
+
+      <p className="sr-only">
+      TechBridge Group provides IT solutions in Lebanon, including managed IT
+      services, IT support, network infrastructure, cloud solutions,
+      cybersecurity services, server installation, IT outsourcing, enterprise
+      WiFi, CCTV systems, and open-source business solutions for companies
+      seeking secure, scalable, and reliable technology services.
+      </p>
+
       <video
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover pointer-events-none"
@@ -62,6 +75,15 @@ function Home() {
         >
           Connecting Ideas. Building Technology. Empowering Growth.
         </h1>
+         <p
+         aria-hidden={!showTitle}
+         className={[
+         "mt-4 text-white/80 text-sm sm:text-base transition-opacity duration-700",
+          showTitle ? "opacity-100" : "opacity-0",
+        ].join(" ")}
+        >
+        Delivering IT solutions, managed IT services, and technology support for businesses across Lebanon
+        </p>
       </div>
     </div>
   );

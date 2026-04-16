@@ -14,9 +14,9 @@ function toTelHref(phone) {
 }
 
 export default function FooterCTA({
-  heading = "Get In Touch",
-  ctaTitle = "Ready to transform your IT infrastructure?",
-  ctaSubtitle = "Contact us to discuss your technology needs.",
+heading = "Contact TechBridge Group",
+ctaTitle = "Looking for IT solutions and managed IT services in Lebanon?",
+ctaSubtitle = "Reliable IT, cloud, and cybersecurity solutions for businesses across Lebanon.",
   email = "info@tech-bridgegroup.com",
   phone = "+961 70 60 68 18",
   tagline = "Innovate, Connect, Build",

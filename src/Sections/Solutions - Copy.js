@@ -1,3 +1,4 @@
+// src/sections/OurSolutions.jsx
 import React, { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import VID2 from "../assets/Vids/VID-2.mp4";
@@ -16,69 +17,15 @@ import {
 
 // ---- Data ----
 const DEFAULT_SOLUTIONS = [
-  {
-    key: "it-solutions",
-    title: "IT Solutions in Lebanon",
-    blurb:
-      "Comprehensive IT solutions in Lebanon designed to support business growth, scalability, and digital transformation.",
-    icon: <Laptop2 className="h-6 w-6" aria-hidden />,
-  },
-  {
-    key: "it-support",
-    title: "IT Support Services in Lebanon",
-    blurb:
-      "Reliable and proactive IT support services in Lebanon to keep your business running smoothly at all times.",
-    icon: <Wrench className="h-6 w-6" aria-hidden />,
-  },
-  {
-    key: "networking",
-    title: "Network Infrastructure Solutions",
-    blurb:
-      "Secure and scalable network infrastructure solutions for businesses across Lebanon.",
-    icon: <Globe2 className="h-6 w-6" aria-hidden />,
-  },
-  {
-    key: "wifi",
-    title: "Enterprise WiFi Solutions",
-    blurb:
-      "High-performance enterprise WiFi solutions with professional design, deployment, and optimization.",
-    icon: <Wifi className="h-6 w-6" aria-hidden />,
-  },
-  {
-    key: "consultancy",
-    title: "IT Consultancy Services",
-    blurb:
-      "Strategic IT consultancy services to help businesses in Lebanon align technology with their goals.",
-    icon: <Target className="h-6 w-6" aria-hidden />,
-  },
-  {
-    key: "network-design",
-    title: "Network Design & Implementation",
-    blurb:
-      "Custom network design and implementation services optimized for performance, security, and scalability.",
-    icon: <Network className="h-6 w-6" aria-hidden />,
-  },
-  {
-    key: "servers-storage",
-    title: "Server Installation & Storage Solutions",
-    blurb:
-      "Professional server installation and secure storage solutions tailored for business continuity.",
-    icon: <Server className="h-6 w-6" aria-hidden />,
-  },
-  {
-    key: "cctv",
-    title: "CCTV Installation Services",
-    blurb:
-      "Advanced CCTV installation and surveillance systems for monitoring and security in Lebanon.",
-    icon: <Camera className="h-6 w-6" aria-hidden />,
-  },
-  {
-    key: "open-source",
-    title: "Open-Source IT Solutions",
-    blurb:
-      "Cost-effective open-source IT solutions providing flexibility, security, and long-term scalability.",
-    icon: <LockKeyhole className="h-6 w-6" aria-hidden />,
-  },
+  { key: "it-solutions", title: "IT Solutions", blurb: "Comprehensive technology services for business growth.", icon: <Laptop2 className="h-6 w-6" aria-hidden /> },
+  { key: "it-support", title: "IT Support", blurb: "Proactive, friendly technical support when it matters.", icon: <Wrench className="h-6 w-6" aria-hidden /> },
+  { key: "networking", title: "Networking", blurb: "Scalable, secure network infrastructure end-to-end.", icon: <Globe2 className="h-6 w-6" aria-hidden /> },
+  { key: "wifi", title: "WiFi Solutions", blurb: "Enterprise-grade wireless with site surveying and tuning.", icon: <Wifi className="h-6 w-6" aria-hidden /> },
+  { key: "consultancy", title: "Consultancy", blurb: "Strategic IT advisory aligned to your roadmap.", icon: <Target className="h-6 w-6" aria-hidden /> },
+  { key: "network-design", title: "Network Design", blurb: "Custom architectures optimized for performance.", icon: <Network className="h-6 w-6" aria-hidden /> },
+  { key: "servers-storage", title: "Servers & Storage", blurb: "Secure, reliable platforms engineered for uptime.", icon: <Server className="h-6 w-6" aria-hidden /> },
+  { key: "cctv", title: "CCTV Systems", blurb: "Smart surveillance, monitoring, and retention.", icon: <Camera className="h-6 w-6" aria-hidden /> },
+  { key: "open-source", title: "Open-Source Solutions", blurb: "Cost-effective and flexible systems without lock-in.", icon: <LockKeyhole className="h-6 w-6" aria-hidden /> },
 ];
 
 // ---- Utilities ----
@@ -92,14 +39,14 @@ function SolutionCard({ item }) {
 
   return (
     <motion.div
-      role="group"
+      role="group" // keep group-hover styles
       whileHover={!prefersReducedMotion ? { y: -4 } : undefined}
       className={cn(
         "group relative w-full rounded-2xl p-[1px] text-left",
         "bg-gradient-to-br from-cyan-400/50 via-sky-500/30 to-indigo-500/40"
       )}
       aria-label={`${item.title}: ${item.blurb}`}
-      tabIndex={-1}
+      tabIndex={-1} // non-interactive
     >
       <div
         className={cn(
@@ -141,10 +88,10 @@ function SolutionCard({ item }) {
 }
 
 // ---- Section ----
-export default function Solutions({
+export default function OurSolutions({
   id = "our-solutions",
- heading = "IT Solutions & Services",
- subheading = "Managed IT support, network infrastructure, cloud solutions, cybersecurity, CCTV, and business technology services",
+  heading = "Our Solutions",
+  subheading = "What we deliver end-to-end",
   items = DEFAULT_SOLUTIONS,
   className,
 }) {
@@ -154,20 +101,15 @@ export default function Solutions({
   useEffect(() => {
     const root = containerRef.current;
     if (!root) return;
-
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) {
-            videoRef.current?.play?.().catch(() => {});
-          } else {
-            videoRef.current?.pause?.();
-          }
+          if (e.isIntersecting) videoRef.current?.play?.().catch(() => {});
+          else videoRef.current?.pause?.();
         });
       },
       { threshold: 0.15 }
     );
-
     io.observe(root);
     return () => io.disconnect();
   }, []);
@@ -182,6 +124,7 @@ export default function Solutions({
         className
       )}
     >
+      {/* Full-bleed background video */}
       <video
         ref={videoRef}
         className="absolute inset-0 -z-30 h-full w-full object-cover pointer-events-none"
@@ -192,24 +135,17 @@ export default function Solutions({
         playsInline
         aria-hidden="true"
       />
-
+      {/* Dark scrim for contrast */}
       <div className="absolute inset-0 -z-20 bg-slate-950/70" />
 
+      {/* Decorative overlays */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(60%_30%_at_50%_0%,rgba(14,165,233,0.25),transparent_60%)]" />
         <div className="absolute inset-0 [mask-image:radial-gradient(70%_50%_at_50%_30%,black,transparent)]">
-          <svg
-            className="h-full w-full opacity-[0.09]"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg className="h-full w-full opacity-[0.09]" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path
-                  d="M 40 0 L 0 0 0 40"
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="0.5"
-                />
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid)" />
@@ -219,17 +155,14 @@ export default function Solutions({
         <div className="absolute -bottom-16 -left-10 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl" />
       </div>
 
+      {/* Content */}
       <div className="container mx-auto px-4 relative">
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80">
             <Cpu className="h-4 w-4 text-cyan-300" aria-hidden />
             <span>Trusted technology partner</span>
           </div>
-
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            {heading}
-          </h2>
-
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">{heading}</h2>
           <p className="mt-2 text-white/70">{subheading}</p>
         </div>
 
