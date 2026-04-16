@@ -38,9 +38,10 @@ const MissionSection = ({
           </h2>
 
           <p className="mx-auto mt-8 text-[17px] leading-8 text-slate-200 text-left">
-            TechBridge Group bridges the gap between technology challenges and business opportunities.
-            We provide comprehensive IT solutions, from network design and infrastructure to ongoing
-            support and consultancy, and ensuring your technology works as hard as you do.
+              TechBridge Group is a trusted IT solutions provider in Lebanon, delivering reliable managed IT services, 
+              infrastructure solutions, and technical support tailored to business needs. We help organizations design, 
+              implement, and manage secure and scalable technology environments, enabling them to operate more efficiently 
+              and grow with confidence.
           </p>
 
           {/* Real bullets w/ hanging indent */}
@@ -54,13 +55,13 @@ const MissionSection = ({
               marker:text-slate-300
             "
           >
-            <li className="pl-1">Tailored IT infrastructure and support</li>
-            <li className="pl-1">
-              Expertise in networking, virtualization, cloud, and open-source systems
-            </li>
-            <li className="pl-1">
-              Trusted by organizations across Lebanon and the region
-            </li>
+          <li className="pl-1">Tailored IT infrastructure and managed IT support services</li>
+          <li className="pl-1">
+            Expertise in networking, virtualization, cloud solutions, and open-source platforms
+          </li>
+          <li className="pl-1">
+           Trusted by businesses across Beirut, Lebanon, and the region
+          </li>
           </ul>
         </div>
 

@@ -63,7 +63,7 @@ function Nav() {
         >
           <img
             src={logo}
-            alt="Tech Bridge Group"
+            alt="TechBridge Group IT Solutions Company in Lebanon"
             className={`${LOGO_HEIGHT} transition duration-300 ease-in-out select-none`}
             draggable="false"
             decoding="async"
