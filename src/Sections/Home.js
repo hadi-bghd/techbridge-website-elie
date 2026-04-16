@@ -6,19 +6,27 @@ function Home() {
   const videoRef = useRef(null);
   const [showTitle, setShowTitle] = useState(false);
 
-  useEffect(() => {
-    const v = videoRef.current;
+useEffect(() => {
+  const video = videoRef.current;
+  if (!video) return;
 
-    if (v) {
-      v.play?.().catch(() => {});
-    }
+  // Make sure video plays
+  video.play?.().catch(() => {});
 
-    const timer = setTimeout(() => {
+  const triggerTime = 3.8; // <-- YOU WILL ADJUST THIS
+
+  const handleTimeUpdate = () => {
+    if (video.currentTime >= triggerTime) {
       setShowTitle(true);
-    }, 4500);
+    }
+  };
 
-    return () => clearTimeout(timer);
-  }, []);
+  video.addEventListener("timeupdate", handleTimeUpdate);
+
+  return () => {
+    video.removeEventListener("timeupdate", handleTimeUpdate);
+  };
+}, []);
 
   return (
     <div
