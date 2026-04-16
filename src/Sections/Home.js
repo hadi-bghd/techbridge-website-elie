@@ -1,32 +1,33 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../Style/Home.css";
-import VID1 from "../assets/Vids/VID-1.mp4";
+import VID1_MP4 from "../assets/Vids/VID-1.mp4";
+import VID1_WEBM from "../assets/Vids/VID-1.webm";
 
 function Home() {
   const videoRef = useRef(null);
   const [showTitle, setShowTitle] = useState(false);
 
-useEffect(() => {
-  const video = videoRef.current;
-  if (!video) return;
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
 
-  // Make sure video plays
-  video.play?.().catch(() => {});
+    // Make sure video plays
+    video.play?.().catch(() => {});
 
-  const triggerTime = 3.8; // <-- YOU WILL ADJUST THIS
+    const triggerTime = 3.8; // adjust this later if needed
 
-  const handleTimeUpdate = () => {
-    if (video.currentTime >= triggerTime) {
-      setShowTitle(true);
-    }
-  };
+    const handleTimeUpdate = () => {
+      if (video.currentTime >= triggerTime) {
+        setShowTitle(true);
+      }
+    };
 
-  video.addEventListener("timeupdate", handleTimeUpdate);
+    video.addEventListener("timeupdate", handleTimeUpdate);
 
-  return () => {
-    video.removeEventListener("timeupdate", handleTimeUpdate);
-  };
-}, []);
+    return () => {
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+    };
+  }, []);
 
   return (
     <div
@@ -37,14 +38,16 @@ useEffect(() => {
       <video
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover pointer-events-none"
-        src={VID1}
         autoPlay
         muted
         loop
         playsInline
         preload="metadata"
         aria-hidden="true"
-      />
+      >
+        <source src={VID1_WEBM} type="video/webm" />
+        <source src={VID1_MP4} type="video/mp4" />
+      </video>
 
       <div className="absolute inset-0 bg-black/35" />
 
