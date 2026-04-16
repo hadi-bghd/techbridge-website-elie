@@ -15,7 +15,7 @@ function Home() {
 
     const timer = setTimeout(() => {
       setShowTitle(true);
-    }, 1000);
+    }, 4500);
 
     return () => clearTimeout(timer);
   }, []);
