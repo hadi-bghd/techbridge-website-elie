@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { Link } from "react-router-dom";
 import VID2 from "../assets/Vids/VID-2.mp4";
 import {
   Laptop2,
@@ -12,30 +13,43 @@ import {
   Camera,
   LockKeyhole,
   Cpu,
+  ShieldCheck,
+  Code,
+  PenTool,
 } from "lucide-react";
 
 // ---- Data ----
 const DEFAULT_SOLUTIONS = [
   {
     key: "it-solutions",
-    title: "IT Solutions in Lebanon",
+    title: "IT Solutions",
     blurb:
-      "Comprehensive IT solutions in Lebanon designed to support business growth, scalability, and digital transformation.",
+      "Comprehensive IT solutions designed to support business growth, scalability, and digital transformation.",
     icon: <Laptop2 className="h-6 w-6" aria-hidden />,
   },
   {
     key: "it-support",
-    title: "IT Support Services in Lebanon",
+    title: "IT Support Services",
     blurb:
-      "Reliable and proactive IT support services in Lebanon to keep your business running smoothly at all times.",
+      "Reliable and proactive IT support services to keep your business running smoothly at all times.",
     icon: <Wrench className="h-6 w-6" aria-hidden />,
+    href: "/it-support",
   },
   {
     key: "networking",
     title: "Network Infrastructure Solutions",
     blurb:
-      "Secure and scalable network infrastructure solutions for businesses across Lebanon.",
+      "Secure and scalable network infrastructure solutions for businesses.",
     icon: <Globe2 className="h-6 w-6" aria-hidden />,
+    href: "/network-infrastructure",
+  },
+  {
+    key: "cybersecurity",
+    title: "Cybersecurity Services",
+    blurb:
+      "Advanced cybersecurity solutions to protect systems, networks, and business data from modern threats.",
+    icon: <ShieldCheck className="h-6 w-6" aria-hidden />,
+    href: "/cybersecurity",
   },
   {
     key: "wifi",
@@ -48,7 +62,7 @@ const DEFAULT_SOLUTIONS = [
     key: "consultancy",
     title: "IT Consultancy Services",
     blurb:
-      "Strategic IT consultancy services to help businesses in Lebanon align technology with their goals.",
+      "Strategic IT consultancy services to help businesses align technology with their goals.",
     icon: <Target className="h-6 w-6" aria-hidden />,
   },
   {
@@ -69,7 +83,7 @@ const DEFAULT_SOLUTIONS = [
     key: "cctv",
     title: "CCTV Installation Services",
     blurb:
-      "Advanced CCTV installation and surveillance systems for monitoring and security in Lebanon.",
+      "Advanced CCTV installation and surveillance systems for monitoring and security.",
     icon: <Camera className="h-6 w-6" aria-hidden />,
   },
   {
@@ -79,6 +93,24 @@ const DEFAULT_SOLUTIONS = [
       "Cost-effective open-source IT solutions providing flexibility, security, and long-term scalability.",
     icon: <LockKeyhole className="h-6 w-6" aria-hidden />,
   },
+
+  // ✅ FIXED (now clickable)
+  {
+    key: "software-dev",
+    title: "Software & Web Development",
+    blurb:
+      "Custom software and web development solutions designed to support business operations and digital growth.",
+    icon: <Code className="h-6 w-6" aria-hidden />,
+    href: "/software-development",
+  },
+
+  {
+    key: "design",
+    title: "Graphic Design",
+    blurb:
+      "Professional graphic design services to enhance brand identity and visual communication.",
+    icon: <PenTool className="h-6 w-6" aria-hidden />,
+  },
 ];
 
 // ---- Utilities ----
@@ -86,21 +118,12 @@ function cn(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-// ---- Card (non-clickable, keeps hover bounce) ----
+// ---- Card ----
 function SolutionCard({ item }) {
   const prefersReducedMotion = useReducedMotion();
 
-  return (
-    <motion.div
-      role="group"
-      whileHover={!prefersReducedMotion ? { y: -4 } : undefined}
-      className={cn(
-        "group relative w-full rounded-2xl p-[1px] text-left",
-        "bg-gradient-to-br from-cyan-400/50 via-sky-500/30 to-indigo-500/40"
-      )}
-      aria-label={`${item.title}: ${item.blurb}`}
-      tabIndex={-1}
-    >
+  const cardContent = (
+    <>
       <div
         className={cn(
           "rounded-2xl h-full w-full",
@@ -136,6 +159,41 @@ function SolutionCard({ item }) {
           "bg-gradient-to-br from-cyan-500/30 via-sky-500/20 to-indigo-500/30"
         )}
       />
+    </>
+  );
+
+  if (item.href) {
+    return (
+      <motion.div
+        whileHover={!prefersReducedMotion ? { y: -4 } : undefined}
+        className={cn(
+          "group relative w-full rounded-2xl p-[1px]",
+          "bg-gradient-to-br from-cyan-400/50 via-sky-500/30 to-indigo-500/40"
+        )}
+      >
+        <Link
+          to={item.href}
+          className="block h-full rounded-2xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+          aria-label={`${item.title}: ${item.blurb}`}
+        >
+          {cardContent}
+        </Link>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      role="group"
+      whileHover={!prefersReducedMotion ? { y: -4 } : undefined}
+      className={cn(
+        "group relative w-full rounded-2xl p-[1px] text-left",
+        "bg-gradient-to-br from-cyan-400/50 via-sky-500/30 to-indigo-500/40"
+      )}
+      aria-label={`${item.title}: ${item.blurb}`}
+      tabIndex={-1}
+    >
+      {cardContent}
     </motion.div>
   );
 }
@@ -143,8 +201,9 @@ function SolutionCard({ item }) {
 // ---- Section ----
 export default function Solutions({
   id = "our-solutions",
- heading = "IT Solutions & Services",
- subheading = "Managed IT support, network infrastructure, cloud solutions, cybersecurity, CCTV, and business technology services",
+  heading = "IT Solutions & Services",
+  subheading =
+    "Managed IT support, network infrastructure, cloud solutions, cybersecurity, CCTV, and business technology services",
   items = DEFAULT_SOLUTIONS,
   className,
 }) {
@@ -178,7 +237,7 @@ export default function Solutions({
       ref={containerRef}
       className={cn(
         "relative isolate overflow-hidden",
-        "py-16 sm:py-20 lg:py-24",
+        "pt-0 pb-16 sm:pt-2 sm:pb-20 lg:pt-4 lg:pb-24",
         className
       )}
     >
@@ -194,30 +253,6 @@ export default function Solutions({
       />
 
       <div className="absolute inset-0 -z-20 bg-slate-950/70" />
-
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(60%_30%_at_50%_0%,rgba(14,165,233,0.25),transparent_60%)]" />
-        <div className="absolute inset-0 [mask-image:radial-gradient(70%_50%_at_50%_30%,black,transparent)]">
-          <svg
-            className="h-full w-full opacity-[0.09]"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path
-                  d="M 40 0 L 0 0 0 40"
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="0.5"
-                />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
-        <div className="absolute -top-20 -right-16 h-64 w-64 rounded-full bg-cyan-500/20 blur-3xl" />
-        <div className="absolute -bottom-16 -left-10 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl" />
-      </div>
 
       <div className="container mx-auto px-4 relative">
         <div className="mx-auto max-w-3xl text-center">

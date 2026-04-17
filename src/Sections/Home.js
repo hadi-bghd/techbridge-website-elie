@@ -35,18 +35,31 @@ function Home() {
       className="relative flex h-screen min-h-screen items-center justify-center overflow-hidden bg-[#071b26]"
       style={{ perspective: "900px" }}
     >
-      {/* ✅ Hidden SEO H1 (does NOT affect design) */}
+      {/* Hidden SEO H1 */}
       <h1 className="sr-only">
         IT Solutions and Managed IT Services in Lebanon
       </h1>
 
       <p className="sr-only">
-      TechBridge Group provides IT solutions in Lebanon, including managed IT
+       TechBridge Group provides IT solutions in Lebanon, including managed IT
       services, IT support, network infrastructure, cloud solutions,
       cybersecurity services, server installation, IT outsourcing, enterprise
-      WiFi, CCTV systems, and open-source business solutions for companies
-      seeking secure, scalable, and reliable technology services.
-      </p>
+      WiFi, CCTV systems, software development, web development, graphic design,
+      and open-source business solutions for companies seeking secure, scalable,
+      and reliable technology services.
+
+      Learn more about our IT support services:
+      <a href="/it-support">IT Support Lebanon</a>
+
+      Learn more about our network infrastructure services:
+      <a href="/network-infrastructure">Network Infrastructure Lebanon</a>
+
+      Learn more about our cybersecurity services:
+      <a href="/cybersecurity">Cybersecurity Services Lebanon</a>
+
+      Learn more about our software and web development services:
+      <a href="/software-development">Software Development Lebanon</a>
+     </p>
 
       <video
         ref={videoRef}
@@ -75,14 +88,15 @@ function Home() {
         >
           Connecting Ideas. Building Technology. Empowering Growth.
         </h1>
-         <p
-         aria-hidden={!showTitle}
-         className={[
-         "mt-4 text-white/80 text-sm sm:text-base transition-opacity duration-700",
-          showTitle ? "opacity-100" : "opacity-0",
-        ].join(" ")}
+
+        <p
+          aria-hidden={!showTitle}
+          className={[
+            "mt-4 text-white/80 text-sm sm:text-base transition-opacity duration-700",
+            showTitle ? "opacity-100" : "opacity-0",
+          ].join(" ")}
         >
-        Delivering IT solutions, managed IT services, and technology support for businesses across Lebanon
+          Delivering IT solutions, managed IT services, and technology support for businesses across Lebanon
         </p>
       </div>
     </div>

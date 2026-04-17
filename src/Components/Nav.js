@@ -1,4 +1,3 @@
-// src/components/Nav.js
 import React, { useState, useEffect } from "react";
 import { scroller } from "react-scroll";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -7,10 +6,9 @@ import logo from "../assets/logos/LogoNoBG.png";
 function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [navbarBg, setNavbarBg] = useState("#182b38");
-  const [isScreenMinimized, setIsScreenMinimized] = useState(false);
 
-  const TEXT_FONT = "text-xl"; // fixed menu text size
-  const LOGO_HEIGHT = "h-48";  // fixed logo height
+  const TEXT_FONT = "text-xl";
+  const LOGO_HEIGHT = "h-48";
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,39 +23,58 @@ function Nav() {
     }
   };
 
-  const handleResize = () => setIsScreenMinimized(window.innerWidth <= 768);
-
   useEffect(() => {
     window.addEventListener("scroll", changeNavbarBg);
-    window.addEventListener("resize", handleResize);
-    handleResize();
     return () => {
       window.removeEventListener("scroll", changeNavbarBg);
-      window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const getSectionOffset = (section) => {
+    return section === "solutions" ? -20 : -80;
+  };
 
   const scrollToSection = (section) => {
     scroller.scrollTo(section, {
       duration: 1000,
       delay: 0,
       smooth: "easeInOutQuart",
+      offset: getSectionOffset(section),
     });
+    setIsMenuOpen(false);
+  };
+
+  const goToSection = (section) => {
+    if (location.pathname === "/" || location.pathname === "/techbridge") {
+      scrollToSection(section);
+      return;
+    }
+
+    navigate("/");
+
+    setTimeout(() => {
+      scroller.scrollTo(section, {
+        duration: 1000,
+        delay: 0,
+        smooth: "easeInOutQuart",
+        offset: getSectionOffset(section),
+      });
+    }, 350);
+
     setIsMenuOpen(false);
   };
 
   return (
     <nav
-      className={`navbar h-20 px-4 ${"text-white"} fixed top-0 w-full z-30 transition-colors duration-500 ease-in-out`}
+      className="navbar h-20 px-4 text-white fixed top-0 w-full z-30 transition-colors duration-500 ease-in-out"
       style={{ backgroundColor: navbarBg }}
     >
       <div
         className="container mx-auto flex h-full items-center relative"
         style={{ fontFamily: "Bookman Old Style, serif", fontWeight: 100 }}
       >
-        {/* Left: Logo (clickable) */}
         <button
-          onClick={() => scrollToSection("home")}
+          onClick={() => goToSection("home")}
           className="shrink-0 focus:outline-none"
           aria-label="Go to home"
         >
@@ -70,19 +87,28 @@ function Nav() {
           />
         </button>
 
-        {/* Right-aligned desktop menu (fixed size) */}
         <ul
           className={`hidden lg:flex ml-auto justify-end items-center gap-8 ${TEXT_FONT} nav-text`}
         >
-          <li className="px-2 py-2 hover:text-cyan-500 cursor-pointer whitespace-nowrap" onClick={() => scrollToSection("home")}>
+          <li
+            className="px-2 py-2 hover:text-cyan-500 cursor-pointer whitespace-nowrap"
+            onClick={() => goToSection("home")}
+          >
             Home
           </li>
-          <li className="px-2 py-2 hover:text-cyan-500 cursor-pointer whitespace-nowrap" onClick={() => scrollToSection("mission")}>
+
+          <li
+            className="px-2 py-2 hover:text-cyan-500 cursor-pointer whitespace-nowrap"
+            onClick={() => goToSection("story")}
+          >
             About us
           </li>
 
           <li className="relative group px-2 py-2 cursor-pointer whitespace-nowrap">
-            <div className="hover:text-cyan-500" onClick={() => scrollToSection("mission")}>
+            <div
+              className="hover:text-cyan-500"
+              onClick={() => goToSection("mission")}
+            >
               Our Mission
             </div>
             <div className="absolute right-0 hidden group-hover:block mt-2 bg-[#6F6D39] text-white shadow-md rounded-md whitespace-nowrap">
@@ -90,49 +116,91 @@ function Nav() {
             </div>
           </li>
 
-          <li className="px-2 py-2 hover:text-cyan-500 cursor-pointer whitespace-nowrap" onClick={() => scrollToSection("vision")}>
+          <li
+            className="px-2 py-2 hover:text-cyan-500 cursor-pointer whitespace-nowrap"
+            onClick={() => goToSection("vision")}
+          >
             Our Vision
           </li>
-          <li className="px-2 py-2 hover:text-cyan-500 cursor-pointer whitespace-nowrap" onClick={() => scrollToSection("solutions")}>
+
+          <li
+            className="px-2 py-2 hover:text-cyan-500 cursor-pointer whitespace-nowrap"
+            onClick={() => goToSection("solutions")}
+          >
             Our Solutions
           </li>
-          <li className="px-2 py-2 hover:text-cyan-500 cursor-pointer whitespace-nowrap" onClick={() => scrollToSection("footer")}>
+
+          <li
+            className="px-2 py-2 hover:text-cyan-500 cursor-pointer whitespace-nowrap"
+            onClick={() => goToSection("footer")}
+          >
             Contact Us
           </li>
         </ul>
 
-        {/* Mobile: hamburger on the right */}
         <button
           aria-label="Open menu"
           aria-expanded={isMenuOpen}
           className="lg:hidden ml-auto text-white focus:outline-none"
           onClick={toggleMenu}
         >
-          <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7h16M4 12h16M4 17h16" />
+          <svg
+            className="h-7 w-7"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 7h16M4 12h16M4 17h16"
+            />
           </svg>
         </button>
 
-        {/* Mobile dropdown: right aligned */}
         {isMenuOpen && (
           <div className="lg:hidden absolute right-4 top-full mt-3 w-56 rounded-lg shadow-lg bg-[#182b38] border border-white/10">
             <ul className={`flex flex-col ${TEXT_FONT} nav-text`}>
-              <li className="px-4 py-3 hover:text-cyan-500 cursor-pointer whitespace-nowrap" onClick={() => scrollToSection("home")}>
+              <li
+                className="px-4 py-3 hover:text-cyan-500 cursor-pointer whitespace-nowrap"
+                onClick={() => goToSection("home")}
+              >
                 Home
               </li>
-              <li className="px-4 py-3 hover:text-cyan-500 cursor-pointer whitespace-nowrap" onClick={() => scrollToSection("story")}>
+
+              <li
+                className="px-4 py-3 hover:text-cyan-500 cursor-pointer whitespace-nowrap"
+                onClick={() => goToSection("story")}
+              >
                 About us
               </li>
-              <li className="px-4 py-3 hover:text-cyan-500 cursor-pointer whitespace-nowrap" onClick={() => scrollToSection("mission")}>
+
+              <li
+                className="px-4 py-3 hover:text-cyan-500 cursor-pointer whitespace-nowrap"
+                onClick={() => goToSection("mission")}
+              >
                 Our Mission
               </li>
-              <li className="px-4 py-3 hover:text-cyan-500 cursor-pointer whitespace-nowrap" onClick={() => scrollToSection("vision")}>
+
+              <li
+                className="px-4 py-3 hover:text-cyan-500 cursor-pointer whitespace-nowrap"
+                onClick={() => goToSection("vision")}
+              >
                 Our Vision
               </li>
-              <li className="px-4 py-3 hover:text-cyan-500 cursor-pointer whitespace-nowrap" onClick={() => scrollToSection("solutions")}>
+
+              <li
+                className="px-4 py-3 hover:text-cyan-500 cursor-pointer whitespace-nowrap"
+                onClick={() => goToSection("solutions")}
+              >
                 Our Solutions
               </li>
-              <li className="px-4 py-3 hover:text-cyan-500 cursor-pointer whitespace-nowrap" onClick={() => scrollToSection("footer")}>
+
+              <li
+                className="px-4 py-3 hover:text-cyan-500 cursor-pointer whitespace-nowrap"
+                onClick={() => goToSection("footer")}
+              >
                 Contact Us
               </li>
             </ul>

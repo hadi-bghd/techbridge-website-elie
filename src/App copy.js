@@ -1,5 +1,5 @@
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Routes,
   useLocation,
@@ -8,6 +8,8 @@ import {
 import Nav from "./Components/Nav";
 import "./App.css";
 import TechBridgePage from "./Sections/TechBridgePage";
+import ITSupport from "./Sections/ITSupport";
+import NetworkInfrastructure from "./Sections/NetworkInfrastructure";
 
 const AppContent = () => {
   const location = useLocation();
@@ -19,6 +21,8 @@ const AppContent = () => {
       <Routes>
         <Route path="/" element={<TechBridgePage />} />
         <Route path="/techbridge" element={<TechBridgePage />} />
+        <Route path="/it-support" element={<ITSupport />} />
+        <Route path="/network-infrastructure" element={<NetworkInfrastructure />} />
         <Route path="*" element={<TechBridgePage />} />
       </Routes>
     </>
