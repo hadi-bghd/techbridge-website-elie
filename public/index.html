@@ -48,45 +48,92 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <!-- ✅ SEO Structured Data (NEW) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "TechBridge Group",
-  "url": "https://tech-bridgegroup.com/",
-  "logo": "https://tech-bridgegroup.com/favicon.png",
-  "email": "info@tech-bridgegroup.com",
-  "telephone": "+96170606818",
-  "description": "TechBridge Group is a trusted IT solutions provider in Lebanon, delivering managed IT services, infrastructure solutions, and technical support tailored to business needs.",
-  "areaServed": {
-    "@type": "Country",
-    "name": "Lebanon"
-  },
-  "contactPoint": [
+    <!-- ✅ Organization Structured Data -->
+    <script type="application/ld+json">
     {
-      "@type": "ContactPoint",
-      "contactType": "customer support",
-      "telephone": "+96170606818",
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "TechBridge Group",
+      "url": "https://tech-bridgegroup.com/",
+      "logo": "https://tech-bridgegroup.com/favicon.png",
       "email": "info@tech-bridgegroup.com",
-      "availableLanguage": ["English", "Arabic"]
+      "telephone": "+96170606818",
+      "description": "TechBridge Group is a trusted IT solutions provider in Lebanon, delivering managed IT services, infrastructure solutions, and technical support tailored to business needs.",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Lebanon"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "telephone": "+96170606818",
+          "email": "info@tech-bridgegroup.com",
+          "availableLanguage": ["English", "Arabic"]
+        }
+      ],
+      "sameAs": [],
+      "knowsAbout": [
+        "IT support",
+        "Managed IT services",
+        "Network infrastructure",
+        "Cloud solutions",
+        "Cybersecurity services",
+        "Server installation",
+        "IT outsourcing",
+        "Enterprise WiFi",
+        "CCTV systems",
+        "Open-source IT solutions"
+      ]
     }
-  ],
-  "sameAs": [],
-  "knowsAbout": [
-    "IT support",
-    "Managed IT services",
-    "Network infrastructure",
-    "Cloud solutions",
-    "Cybersecurity services",
-    "Server installation",
-    "IT outsourcing",
-    "Enterprise WiFi",
-    "CCTV systems",
-    "Open-source IT solutions"
-  ]
-}
-</script>
+    </script>
+
+    <!-- ✅ NEW: Services Structured Data (VERY IMPORTANT) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "IT Services",
+      "itemListElement": [
+        {
+          "@type": "Service",
+          "name": "IT Support Services",
+          "url": "https://tech-bridgegroup.com/it-support"
+        },
+        {
+          "@type": "Service",
+          "name": "Network Infrastructure Solutions",
+          "url": "https://tech-bridgegroup.com/network-infrastructure"
+        },
+        {
+          "@type": "Service",
+          "name": "Cybersecurity Services",
+          "url": "https://tech-bridgegroup.com/cybersecurity"
+        },
+        {
+          "@type": "Service",
+          "name": "Software and Web Development",
+          "url": "https://tech-bridgegroup.com/software-development"
+        },
+        {
+          "@type": "Service",
+          "name": "Graphic Design Services",
+          "url": "https://tech-bridgegroup.com/graphic-design"
+        },
+        {
+          "@type": "Service",
+          "name": "CCTV Installation Services",
+          "url": "https://tech-bridgegroup.com/cctv-installation"
+        },
+        {
+          "@type": "Service",
+          "name": "Cloud Solutions",
+          "url": "https://tech-bridgegroup.com/cloud-solutions"
+        }
+      ]
+    }
+    </script>
+
   </head>
 
   <body>

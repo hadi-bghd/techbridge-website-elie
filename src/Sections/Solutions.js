@@ -26,6 +26,7 @@ const DEFAULT_SOLUTIONS = [
     blurb:
       "Comprehensive IT solutions designed to support business growth, scalability, and digital transformation.",
     icon: <Laptop2 className="h-6 w-6" aria-hidden />,
+    href: "/it-solutions",
   },
   {
     key: "it-support",
