@@ -7,12 +7,12 @@ function NetworkInfrastructure() {
 
         {/* H1 */}
         <h1 className="text-4xl font-bold mb-6">
-          Network Infrastructure Solutions in Lebanon
+          Network Infrastructure Solutions
         </h1>
 
         {/* Intro */}
         <p className="text-lg text-slate-300 mb-6">
-          TechBridge Group delivers advanced network infrastructure solutions in Lebanon,
+          TechBridge Group delivers advanced network infrastructure solutions across Lebanon,
           helping businesses build reliable, secure, and scalable network environments.
           Our solutions are designed to support business growth, ensure stability,
           and optimize performance across your entire IT infrastructure.
@@ -45,7 +45,7 @@ function NetworkInfrastructure() {
 
         {/* Section 3 */}
         <h2 className="text-2xl font-semibold mt-10 mb-4">
-          Why Choose TechBridge Group in Lebanon
+          Why Choose TechBridge Group
         </h2>
 
         <p className="text-slate-300">
@@ -64,6 +64,14 @@ function NetworkInfrastructure() {
          and{" "}
          <a href="/software-development" className="text-cyan-300 underline">
          software and web development solutions
+         </a>{" "}
+         ,{" "}
+         <a href="/graphic-design" className="text-cyan-300 underline">
+         graphic design services
+         </a>{" "}
+         and{" "}
+         <a href="/cctv-installation" className="text-cyan-300 underline">
+         CCTV installation services
          </a>.
         </p>
 

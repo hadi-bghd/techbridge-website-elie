@@ -7,12 +7,12 @@ function ITSupport() {
 
         {/* H1 */}
         <h1 className="text-4xl font-bold mb-6">
-          IT Support Services in Lebanon
+          IT Support Services
         </h1>
 
         {/* Intro */}
         <p className="text-lg text-slate-300 mb-6">
-          TechBridge Group provides professional IT support services in Lebanon,
+          TechBridge Group provides professional IT support services across Lebanon,
           helping businesses maintain secure, stable, and efficient technology
           environments. Our team delivers fast response times, expert troubleshooting,
           and ongoing support tailored to your business needs.
@@ -64,6 +64,14 @@ function ITSupport() {
          and{" "}
          <a href="/software-development" className="text-cyan-300 underline">
          software and web development solutions
+         </a>{" "}
+         ,{" "}
+         <a href="/graphic-design" className="text-cyan-300 underline">
+         graphic design services
+         </a>{" "}
+         and{" "}
+         <a href="/cctv-installation" className="text-cyan-300 underline">
+         CCTV installation services
          </a>.
         </p>
 

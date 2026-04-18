@@ -12,6 +12,8 @@ import ITSupport from "./Sections/ITSupport";
 import NetworkInfrastructure from "./Sections/NetworkInfrastructure";
 import Cybersecurity from "./Sections/Cybersecurity";
 import SoftwareDevelopment from "./Sections/SoftwareDevelopment";
+import GraphicDesign from "./Sections/GraphicDesign";
+import CCTVInstallation from "./Sections/CCTVInstallation";
 
 const AppContent = () => {
   const location = useLocation();
@@ -27,6 +29,8 @@ const AppContent = () => {
           <Route path="/network-infrastructure" element={<NetworkInfrastructure />} />
           <Route path="/cybersecurity" element={<Cybersecurity />} />
           <Route path="/software-development" element={<SoftwareDevelopment />} />
+          <Route path="/graphic-design" element={<GraphicDesign />} />
+          <Route path="/cctv-installation" element={<CCTVInstallation />} />
           <Route path="*" element={<TechBridgePage />} />
         </Routes>
     </>

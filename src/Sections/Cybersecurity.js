@@ -7,12 +7,12 @@ function Cybersecurity() {
 
         {/* H1 */}
         <h1 className="text-4xl font-bold mb-6">
-          Cybersecurity Services in Lebanon
+          Cybersecurity Services
         </h1>
 
         {/* Intro */}
         <p className="text-lg text-slate-300 mb-6">
-          TechBridge Group provides cybersecurity services in Lebanon, helping
+          TechBridge Group provides cybersecurity services, helping
           businesses protect their systems, networks, and data against modern
           digital threats. We deliver practical and reliable security solutions
           designed to strengthen resilience, reduce risk, and support secure
@@ -46,12 +46,12 @@ function Cybersecurity() {
 
         {/* Section 3 */}
         <h2 className="text-2xl font-semibold mt-10 mb-4">
-          Why Choose TechBridge Group in Lebanon
+          Why Choose TechBridge Group
         </h2>
 
         <p className="text-slate-300">
          TechBridge Group combines technical expertise with a business-focused
-         approach to cybersecurity. We help organizations in Lebanon implement
+         approach to cybersecurity. We help organizations across Lebanon implement
          security measures that are effective, scalable, and aligned with their
          operational needs. Businesses can also strengthen their foundation with our{" "}
          <a href="/it-support" className="text-cyan-300 underline">
@@ -64,6 +64,14 @@ function Cybersecurity() {
          and{" "}
          <a href="/software-development" className="text-cyan-300 underline">
          software and web development solutions
+         </a>{" "}
+         ,{" "}
+         <a href="/graphic-design" className="text-cyan-300 underline">
+         graphic design services
+         </a>{" "}
+         and{" "}
+         <a href="/cctv-installation" className="text-cyan-300 underline">
+         CCTV installation services
          </a>.
         </p>
 

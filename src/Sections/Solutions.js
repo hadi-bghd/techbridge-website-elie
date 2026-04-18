@@ -85,10 +85,11 @@ const DEFAULT_SOLUTIONS = [
     blurb:
       "Advanced CCTV installation and surveillance systems for monitoring and security.",
     icon: <Camera className="h-6 w-6" aria-hidden />,
+    href: "/cctv-installation",
   },
   {
     key: "open-source",
-    title: "Open-Source IT Solutions",
+    title: "Open-Source Solutions",
     blurb:
       "Cost-effective open-source IT solutions providing flexibility, security, and long-term scalability.",
     icon: <LockKeyhole className="h-6 w-6" aria-hidden />,
@@ -110,6 +111,7 @@ const DEFAULT_SOLUTIONS = [
     blurb:
       "Professional graphic design services to enhance brand identity and visual communication.",
     icon: <PenTool className="h-6 w-6" aria-hidden />,
+    href: "/graphic-design",
   },
 ];
 
