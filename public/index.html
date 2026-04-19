@@ -48,17 +48,19 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <!-- ✅ Organization Structured Data -->
+    <!-- ✅ FINAL MERGED ORGANIZATION SCHEMA -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "TechBridge Group",
+      "name": "TechBridge Group SARL",
+      "alternateName": "TechBridge Group",
       "url": "https://tech-bridgegroup.com/",
-      "logo": "https://tech-bridgegroup.com/favicon.png",
+      "logo": "https://tech-bridgegroup.com/logo.png",
+      "image": "https://tech-bridgegroup.com/logo.png",
       "email": "info@tech-bridgegroup.com",
       "telephone": "+96170606818",
-      "description": "TechBridge Group is a trusted IT solutions provider in Lebanon, delivering managed IT services, infrastructure solutions, and technical support tailored to business needs.",
+      "description": "TechBridge Group SARL is an IT solutions provider in Lebanon offering managed IT services, IT support, network infrastructure, cloud solutions, cybersecurity, server installation, CCTV systems, and open-source business solutions.",
       "areaServed": {
         "@type": "Country",
         "name": "Lebanon"
@@ -72,7 +74,11 @@
           "availableLanguage": ["English", "Arabic"]
         }
       ],
-      "sameAs": [],
+      "sameAs": [
+        "https://www.linkedin.com/company/techbridge-group-sarl",
+        "https://x.com/Tech_Bridge_LB",
+        "https://www.instagram.com/techbridgegrouplb/"
+      ],
       "knowsAbout": [
         "IT support",
         "Managed IT services",
@@ -83,12 +89,46 @@
         "IT outsourcing",
         "Enterprise WiFi",
         "CCTV systems",
-        "Open-source IT solutions"
+        "Open-source IT solutions",
+        "Software development",
+        "Web development"
       ]
     }
     </script>
 
-    <!-- ✅ NEW: Services Structured Data (VERY IMPORTANT) -->
+    <!-- ✅ LOCAL BUSINESS SCHEMA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "TechBridge Group SARL",
+      "image": "https://tech-bridgegroup.com/logo.png",
+      "url": "https://tech-bridgegroup.com/",
+      "logo": "https://tech-bridgegroup.com/logo.png",
+      "email": "info@tech-bridgegroup.com",
+      "telephone": "+96170606818",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "LB",
+        "addressLocality": "Beirut"
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Lebanon"
+        }
+      ],
+      "description": "TechBridge Group SARL provides IT solutions in Lebanon including managed IT services, IT support, network infrastructure, cloud solutions, cybersecurity, server solutions, CCTV systems, and software development.",
+      "sameAs": [
+        "https://www.linkedin.com/company/techbridge-group-sarl",
+        "https://x.com/Tech_Bridge_LB",
+        "https://www.instagram.com/techbridgegrouplb/"
+      ],
+      "priceRange": "$$"
+    }
+    </script>
+
+    <!-- ✅ Services Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
