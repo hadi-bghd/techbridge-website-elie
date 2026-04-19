@@ -1,7 +1,7 @@
 // src/components/Footer.js
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Mail, Phone, MessageCircle } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 function cn(...xs) {
   return xs.filter(Boolean).join(" ");
@@ -13,26 +13,16 @@ function toTelHref(phone) {
   return `tel:${sanitized}`;
 }
 
-function toWhatsAppHref(phone) {
-  const sanitized = String(phone).replace(/[^+\d]/g, "");
-  const whatsappNumber = sanitized.replace(/^\+/, "");
-  const message = encodeURIComponent(
-    "Hello TechBridge Group, I am interested in your IT services"
-  );
-  return `https://wa.me/${whatsappNumber}?text=${message}`;
-}
-
 export default function FooterCTA({
-  heading = "Contact TechBridge Group",
-  ctaTitle = "Looking for IT solutions and managed IT services in Lebanon?",
-  ctaSubtitle = "Reliable IT, cloud, and cybersecurity solutions for businesses across Lebanon.",
+heading = "Contact TechBridge Group",
+ctaTitle = "Looking for IT solutions and managed IT services in Lebanon?",
+ctaSubtitle = "Reliable IT, cloud, and cybersecurity solutions for businesses across Lebanon.",
   email = "info@tech-bridgegroup.com",
   phone = "+961 70 60 68 18",
   tagline = "Innovate, Connect, Build",
   className,
 }) {
   const prefersReducedMotion = useReducedMotion();
-  const whatsappHref = toWhatsAppHref(phone);
 
   return (
     <footer
@@ -93,32 +83,13 @@ export default function FooterCTA({
               </div>
 
               {/* Phone row (below email) */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                <Phone className="h-5 w-5" aria-hidden />
                 <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Chat with us on WhatsApp"
-                  className="text-sky-900 transition hover:text-sky-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40 rounded"
-                >
-                  <MessageCircle className="h-5 w-5" aria-hidden />
-                </a>
-
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={toTelHref(phone)}
                   className="text-lg text-sky-900 underline decoration-sky-500/60 underline-offset-4 transition hover:text-sky-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40 rounded"
                 >
                   {phone}
-                </a>
-
-                <a
-                  href={toTelHref(phone)}
-                  aria-label="Call us"
-                  className="text-sky-900 transition hover:text-sky-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40 rounded"
-                >
-                  <Phone className="h-5 w-5" aria-hidden />
                 </a>
               </div>
             </div>

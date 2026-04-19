@@ -1,7 +1,7 @@
 // src/components/Footer.js
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Mail, Phone, MessageCircle } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 function cn(...xs) {
   return xs.filter(Boolean).join(" ");
@@ -11,15 +11,6 @@ function toTelHref(phone) {
   // Why: tel: should ignore spaces/dashes/parentheses.
   const sanitized = String(phone).replace(/[^+\d]/g, "");
   return `tel:${sanitized}`;
-}
-
-function toWhatsAppHref(phone) {
-  const sanitized = String(phone).replace(/[^+\d]/g, "");
-  const whatsappNumber = sanitized.replace(/^\+/, "");
-  const message = encodeURIComponent(
-    "Hello TechBridge Group, I am interested in your IT services"
-  );
-  return `https://wa.me/${whatsappNumber}?text=${message}`;
 }
 
 export default function FooterCTA({
@@ -32,7 +23,6 @@ export default function FooterCTA({
   className,
 }) {
   const prefersReducedMotion = useReducedMotion();
-  const whatsappHref = toWhatsAppHref(phone);
 
   return (
     <footer
@@ -93,19 +83,11 @@ export default function FooterCTA({
               </div>
 
               {/* Phone row (below email) */}
-              <div className="flex items-center gap-3">
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Chat with us on WhatsApp"
-                  className="text-sky-900 transition hover:text-sky-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40 rounded"
-                >
-                  <MessageCircle className="h-5 w-5" aria-hidden />
-                </a>
+              <div className="flex items-center gap-2">
+                <Phone className="h-5 w-5" aria-hidden />
 
                 <a
-                  href={whatsappHref}
+                  href="https://wa.me/96170606818?text=Hello%20TechBridge%20Group%2C%20I%20am%20interested%20in%20your%20IT%20services"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-lg text-sky-900 underline decoration-sky-500/60 underline-offset-4 transition hover:text-sky-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40 rounded"
@@ -113,12 +95,13 @@ export default function FooterCTA({
                   {phone}
                 </a>
 
+                <span className="text-slate-500">|</span>
+
                 <a
                   href={toTelHref(phone)}
-                  aria-label="Call us"
-                  className="text-sky-900 transition hover:text-sky-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40 rounded"
+                  className="text-base text-sky-900 underline decoration-sky-500/60 underline-offset-4 transition hover:text-sky-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40 rounded"
                 >
-                  <Phone className="h-5 w-5" aria-hidden />
+                  Call
                 </a>
               </div>
             </div>

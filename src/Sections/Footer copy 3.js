@@ -8,18 +8,17 @@ function cn(...xs) {
 }
 
 function toTelHref(phone) {
-  // Why: tel: should ignore spaces/dashes/parentheses.
   const sanitized = String(phone).replace(/[^+\d]/g, "");
   return `tel:${sanitized}`;
 }
 
 function toWhatsAppHref(phone) {
   const sanitized = String(phone).replace(/[^+\d]/g, "");
-  const whatsappNumber = sanitized.replace(/^\+/, "");
+  const noPlus = sanitized.replace(/^\+/, "");
   const message = encodeURIComponent(
     "Hello TechBridge Group, I am interested in your IT services"
   );
-  return `https://wa.me/${whatsappNumber}?text=${message}`;
+  return `https://wa.me/${noPlus}?text=${message}`;
 }
 
 export default function FooterCTA({
@@ -32,11 +31,13 @@ export default function FooterCTA({
   className,
 }) {
   const prefersReducedMotion = useReducedMotion();
+
   const whatsappHref = toWhatsAppHref(phone);
+  const telHref = toTelHref(phone);
 
   return (
     <footer
-      id="footer-cta" /* Why: anchor for IntersectionObserver */
+      id="footer-cta"
       className={cn(
         "relative isolate overflow-hidden",
         "pt-12 pb-4 sm:pt-16 sm:pb-6",
@@ -69,68 +70,76 @@ export default function FooterCTA({
           <div
             className={cn(
               "rounded-[26px] backdrop-blur-xl",
-              "bg-white/35",
+              "bg-white/45",
               "ring-1 ring-sky-900/10 shadow-[0_10px_30px_rgba(14,165,233,0.18)]",
               "px-6 py-8 sm:px-8 sm:py-10 text-center"
             )}
           >
-            <p className="text-xl sm:text-2xl font-semibold text-slate-900">
+            <p className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
               {ctaTitle}
             </p>
-            <p className="mt-2 text-base text-slate-800">{ctaSubtitle}</p>
 
-            {/* Contact: stacked vertically, centered */}
-            <div className="mt-5 flex flex-col items-center gap-2 text-sky-800">
-              {/* Email row */}
-              <div className="flex items-center gap-2">
-                <Mail className="h-5 w-5" aria-hidden />
-                <a
-                  href={`mailto:${email}`}
-                  className="text-lg text-sky-900 underline decoration-sky-500/60 underline-offset-4 transition hover:text-sky-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40 rounded"
-                >
-                  {email}
-                </a>
-              </div>
+            <p className="mt-3 text-base sm:text-lg text-slate-700 max-w-2xl mx-auto">
+              {ctaSubtitle}
+            </p>
 
-              {/* Phone row (below email) */}
-              <div className="flex items-center gap-3">
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Chat with us on WhatsApp"
-                  className="text-sky-900 transition hover:text-sky-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40 rounded"
-                >
-                  <MessageCircle className="h-5 w-5" aria-hidden />
-                </a>
+            <div className="mt-7 flex flex-col items-center gap-4">
+              {/* Email */}
+              <a
+                href={`mailto:${email}`}
+                className="inline-flex items-center gap-2 rounded-full bg-white/60 px-4 py-2 text-base sm:text-lg text-slate-800 shadow-sm ring-1 ring-sky-200/80 transition hover:bg-white/80 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40"
+              >
+                <Mail className="h-5 w-5 text-sky-700" aria-hidden />
+                <span>{email}</span>
+              </a>
 
+              {/* Phone actions */}
+              <div className="flex items-center gap-3 rounded-full bg-white/60 px-4 py-2 shadow-sm ring-1 ring-sky-200/80">
+                {/* WhatsApp icon */}
                 <a
                   href={whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg text-sky-900 underline decoration-sky-500/60 underline-offset-4 transition hover:text-sky-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40 rounded"
+                  aria-label="Chat with TechBridge Group on WhatsApp"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-100 text-sky-700 transition hover:bg-sky-200 hover:text-sky-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40"
+                  title="WhatsApp"
+                >
+                  <MessageCircle className="h-5 w-5" />
+                </a>
+
+                {/* Phone number -> same as WhatsApp */}
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base sm:text-lg font-medium text-slate-800 transition hover:text-sky-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40 rounded px-1"
+                  title="Open WhatsApp chat"
                 >
                   {phone}
                 </a>
 
+                {/* Call icon */}
                 <a
-                  href={toTelHref(phone)}
-                  aria-label="Call us"
-                  className="text-sky-900 transition hover:text-sky-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40 rounded"
+                  href={telHref}
+                  aria-label="Call TechBridge Group"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-100 text-sky-700 transition hover:bg-sky-200 hover:text-sky-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600/40"
+                  title="Call"
                 >
-                  <Phone className="h-5 w-5" aria-hidden />
+                  <Phone className="h-5 w-5" />
                 </a>
               </div>
             </div>
           </div>
         </motion.div>
 
-        <p className="relative mt-3 text-center text-xl text-sky-900">
+        <p className="relative mt-4 text-center text-lg sm:text-xl text-sky-900 font-medium">
           {tagline}
         </p>
 
         <div className="mt-3 flex flex-col items-center justify-between gap-3 border-t border-slate-400/60 pt-2 text-xs text-slate-800 sm:flex-row">
-          <p className="mb-0">© {new Date().getFullYear()} Tech Bridge Group. All rights reserved.</p>
+          <p className="mb-0">
+            © {new Date().getFullYear()} Tech Bridge Group. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
