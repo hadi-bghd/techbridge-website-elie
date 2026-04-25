@@ -11,7 +11,7 @@ import {
   Network,
   Server,
   Camera,
-  LockKeyhole,
+  Cloud,
   Cpu,
   ShieldCheck,
   Code,
@@ -58,6 +58,7 @@ const DEFAULT_SOLUTIONS = [
     blurb:
       "High-performance enterprise WiFi solutions with professional design, deployment, and optimization.",
     icon: <Wifi className="h-6 w-6" aria-hidden />,
+    href: "/it-solutions",
   },
   {
     key: "consultancy",
@@ -65,6 +66,7 @@ const DEFAULT_SOLUTIONS = [
     blurb:
       "Strategic IT consultancy services to help businesses align technology with their goals.",
     icon: <Target className="h-6 w-6" aria-hidden />,
+    href: "/it-solutions",
   },
   {
     key: "network-design",
@@ -72,6 +74,7 @@ const DEFAULT_SOLUTIONS = [
     blurb:
       "Custom network design and implementation services optimized for performance, security, and scalability.",
     icon: <Network className="h-6 w-6" aria-hidden />,
+    href: "/it-solutions",
   },
   {
     key: "servers-storage",
@@ -79,6 +82,7 @@ const DEFAULT_SOLUTIONS = [
     blurb:
       "Professional server installation and secure storage solutions tailored for business continuity.",
     icon: <Server className="h-6 w-6" aria-hidden />,
+    href: "/it-solutions",
   },
   {
     key: "cctv",
@@ -89,14 +93,14 @@ const DEFAULT_SOLUTIONS = [
     href: "/cctv-installation",
   },
   {
-    key: "open-source",
-    title: "Open-Source Solutions",
+    key: "hosting-services",
+    title: "Hosting Services",
     blurb:
-      "Cost-effective open-source IT solutions providing flexibility, security, and long-term scalability.",
-    icon: <LockKeyhole className="h-6 w-6" aria-hidden />,
+      "Reliable web hosting, domain, email, and cloud hosting services to keep your business online and secure.",
+    icon: <Cloud className="h-6 w-6" aria-hidden />,
+    href: "https://store.tech-bridgegroup.com/",
+    external: true,
   },
-
-  // ✅ FIXED (now clickable)
   {
     key: "software-dev",
     title: "Software & Web Development",
@@ -105,7 +109,6 @@ const DEFAULT_SOLUTIONS = [
     icon: <Code className="h-6 w-6" aria-hidden />,
     href: "/software-development",
   },
-
   {
     key: "design",
     title: "Graphic Design",
@@ -124,6 +127,8 @@ function cn(...classes) {
 // ---- Card ----
 function SolutionCard({ item }) {
   const prefersReducedMotion = useReducedMotion();
+
+  const cardLabel = `${item.title} - ${item.blurb} - Professional IT services and business technology solutions by TechBridge Group`;
 
   const cardContent = (
     <>
@@ -166,6 +171,18 @@ function SolutionCard({ item }) {
   );
 
   if (item.href) {
+    const LinkWrapper = item.external ? "a" : Link;
+
+    const linkProps = item.external
+      ? {
+          href: item.href,
+          target: "_blank",
+          rel: "noopener noreferrer nofollow",
+        }
+      : {
+          to: item.href,
+        };
+
     return (
       <motion.div
         whileHover={!prefersReducedMotion ? { y: -4 } : undefined}
@@ -174,13 +191,14 @@ function SolutionCard({ item }) {
           "bg-gradient-to-br from-cyan-400/50 via-sky-500/30 to-indigo-500/40"
         )}
       >
-        <Link
-          to={item.href}
+        <LinkWrapper
+          {...linkProps}
+          title={item.title}
           className="block h-full rounded-2xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
-          aria-label={`${item.title}: ${item.blurb}`}
+          aria-label={cardLabel}
         >
           {cardContent}
-        </Link>
+        </LinkWrapper>
       </motion.div>
     );
   }
@@ -193,7 +211,7 @@ function SolutionCard({ item }) {
         "group relative w-full rounded-2xl p-[1px] text-left",
         "bg-gradient-to-br from-cyan-400/50 via-sky-500/30 to-indigo-500/40"
       )}
-      aria-label={`${item.title}: ${item.blurb}`}
+      aria-label={cardLabel}
       tabIndex={-1}
     >
       {cardContent}
@@ -206,7 +224,7 @@ export default function Solutions({
   id = "our-solutions",
   heading = "IT Solutions & Services",
   subheading =
-    "Managed IT support, network infrastructure, cloud solutions, cybersecurity, CCTV, and business technology services",
+    "Managed IT support, network infrastructure, cloud solutions, cybersecurity services, CCTV installation, hosting, and business technology services",
   items = DEFAULT_SOLUTIONS,
   className,
 }) {

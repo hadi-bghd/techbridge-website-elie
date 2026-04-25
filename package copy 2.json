@@ -36,22 +36,11 @@
     "eject": "react-scripts eject"
   },
   "reactSnap": {
-    "inlineCss": false,
-    "include": [
-      "/it-support",
-      "/network-infrastructure",
-      "/software-development",
-      "/cybersecurity",
-      "/it-solutions",
-      "/graphic-design",
-      "/cctv-installation",
-      "/cloud-solutions"
-    ],
+    "inlineCss": true,
     "puppeteerArgs": [
       "--no-sandbox",
       "--disable-setuid-sandbox"
-    ],
-    "waitFor": 2000
+    ]
   },
   "eslintConfig": {
     "extends": [
