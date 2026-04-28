@@ -98,7 +98,8 @@ const DEFAULT_SOLUTIONS = [
     blurb:
       "Reliable web hosting, domain, email, and cloud hosting services to keep your business online and secure.",
     icon: <Cloud className="h-6 w-6" aria-hidden />,
-    href: "/hosting-services",
+    href: "https://store.tech-bridgegroup.com/",
+    external: true,
   },
   {
     key: "software-dev",

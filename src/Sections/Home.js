@@ -55,8 +55,9 @@ function Home() {
           services, IT support, network infrastructure, cloud solutions,
           cybersecurity services, server installation, IT outsourcing, enterprise
           WiFi, CCTV systems, software development, web development, graphic design,
-          and open-source business solutions for companies seeking secure, scalable,
-          and reliable technology services.
+          web hosting, domain registration, business email hosting, SSL certificates,
+          cloud hosting, and open-source business solutions for companies seeking
+          secure, scalable, and reliable technology services.
 
           Learn more about our IT support services:
           <a href="/it-support">IT Support Lebanon</a>
@@ -69,6 +70,9 @@ function Home() {
 
           Learn more about our software and web development services:
           <a href="/software-development">Software Development Lebanon</a>
+
+          Learn more about our hosting services:
+          <a href="/hosting-services">Professional Hosting Services</a>
         </p>
 
         <video
